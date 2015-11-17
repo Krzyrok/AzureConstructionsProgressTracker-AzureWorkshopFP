@@ -39,7 +39,7 @@ namespace AzureConstructionsProgressTracker.Features.ProgressTracking
                 });
             }
 
-            CloudBlockBlob blockBlob = container.GetBlockBlobReference(fileName);
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference(fileName + Guid.NewGuid());
             blockBlob.UploadFromStream(file.InputStream);
 
             return blockBlob.Uri.AbsoluteUri;
