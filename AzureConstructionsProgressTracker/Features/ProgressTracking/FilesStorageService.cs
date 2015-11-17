@@ -39,7 +39,7 @@ namespace AzureConstructionsProgressTracker.Features.ProgressTracking
                 });
             }
 
-            CloudBlockBlob blockBlob = container.GetBlockBlobReference(fileName + Guid.NewGuid());
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference(Guid.NewGuid() + fileName);
             if (fileName.EndsWith(".jpg"))
             {
                 blockBlob.Properties.ContentType = "image/jpg";
