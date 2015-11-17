@@ -40,6 +40,10 @@ namespace AzureConstructionsProgressTracker.Features.ProgressTracking
             }
 
             CloudBlockBlob blockBlob = container.GetBlockBlobReference(fileName + Guid.NewGuid());
+            if (fileName.EndsWith(".jpg"))
+            {
+                blockBlob.Properties.ContentType = "image/jpg";
+            }
             blockBlob.UploadFromStream(file.InputStream);
 
             return blockBlob.Uri.AbsoluteUri;
